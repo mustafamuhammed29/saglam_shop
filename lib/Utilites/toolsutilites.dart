@@ -3,6 +3,7 @@ class ToolsUtilites{
   static final mainColor = Color(0xff7a9c59);
   static final secondColor = Color(0xff313033);
   static final whitColor = Color(0xffffffff);
+  static final PrimeryColor = Color(0xFFff0000);
 
   static List imageTelefon =[
 
