@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:saglam_shop/pages/tips/category.dart';
 
 
 class MyDrawer extends StatefulWidget {
@@ -20,11 +21,11 @@ class _MyDrawerState extends State<MyDrawer> {
             children: <Widget>[
               UserAccountsDrawerHeader(
                 accountName: Text(
-                  "Thaer",
+                  "Mustafa",
                   style: TextStyle(fontSize: 20.0, color: Colors.black),
                 ),
                 accountEmail: Text(
-                  "thaer@gmail.com",
+                  "Mustafa665@gmail.com",
                   style: TextStyle(color: Colors.grey),
                 ),
                 currentAccountPicture: GestureDetector(
@@ -66,13 +67,14 @@ class _MyDrawerState extends State<MyDrawer> {
                   ],
                 ),
               ),
+
               Container(
                 padding: EdgeInsets.only(right: 10.0, left: 10.0),
                 child: Column(
                   children: <Widget>[
                     InkWell(
                       onTap: () {
-
+                         Navigator.push(context, MaterialPageRoute(builder: (context)=>Category()));
                       },
                       child: ListTile(
                         title: Text(

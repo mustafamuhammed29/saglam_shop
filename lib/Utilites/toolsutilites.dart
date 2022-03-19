@@ -5,6 +5,12 @@ class ToolsUtilites{
   static final whitColor = Color(0xffffffff);
   static final PrimeryColor = Color(0xFFff0000);
 
+
+  static List icons =[
+
+
+  ];
+
   static List imageTelefon =[
 
     "https://images.unsplash.com/photo-1544228865-7d73678c0f28?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzR8fHBob25lfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
