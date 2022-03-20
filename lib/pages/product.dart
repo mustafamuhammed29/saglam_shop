@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+<<<<<<< HEAD
 import 'package:saglam_shop/shopping/shopping.dart';
+=======
+>>>>>>> cdac72cfb3b9578e0da6d4d97d82a4944590de20
 
 class ProductDetail extends StatefulWidget {
   @override
@@ -46,6 +49,7 @@ class _ProductDetailState extends State<ProductDetail> {
                   ],
                   borderRadius: BorderRadius.circular(15)),
               child: IconButton(
+<<<<<<< HEAD
                 icon: Icon(
                   Icons.shopping_cart,
                   color: Colors.red,
@@ -54,6 +58,13 @@ class _ProductDetailState extends State<ProductDetail> {
                 onPressed: () {Navigator.push(context,
                   MaterialPageRoute(builder: (context) => new Shopping()));
                 })),
+=======
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.shopping_cart,
+                    color: Colors.red,
+                  ))),
+>>>>>>> cdac72cfb3b9578e0da6d4d97d82a4944590de20
         ],
       ),
     );
@@ -195,6 +206,7 @@ class _ProductDetailState extends State<ProductDetail> {
                 padding: EdgeInsets.all(10),
                 child: Text(
                   "Sepata Ekle ",
+<<<<<<< HEAD
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 15,
@@ -207,11 +219,25 @@ class _ProductDetailState extends State<ProductDetail> {
                     Icons.shopping_cart,
                     color: Colors.red,
                   ),
+=======
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15,color: Colors.white),
+                  
+                ),
+              ),
+              Container(
+                child: Icon(
+                  Icons.shopping_basket_outlined,
+                  color: Colors.white,
+>>>>>>> cdac72cfb3b9578e0da6d4d97d82a4944590de20
                 ),
               ),
             ],
           ),
         ),
+<<<<<<< HEAD
+=======
+        
+>>>>>>> cdac72cfb3b9578e0da6d4d97d82a4944590de20
         padding: EdgeInsets.only(left: 50, right: 30),
         height: 65.0,
         decoration: BoxDecoration(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:saglam_shop/Utilites/toolsutilites.dart';
 import 'package:saglam_shop/drawer/mydrawer.dart';
 import 'package:saglam_shop/pages/product.dart';
 
@@ -14,18 +15,27 @@ class _HomeState extends State<Home> {
       "pro_id": "1",
       "pro_name": "product1",
       "pro_desc": "productproductproduct1",
+<<<<<<< HEAD
       "pro_image": "images/product/1.jpg"
+=======
+      "pro image": "images/product/1.jpg"
+>>>>>>> cdac72cfb3b9578e0da6d4d97d82a4944590de20
     },
     {
       "pro_id": "2",
       "pro_name": "product2",
       "pro_desc": "productproductproduct1",
+<<<<<<< HEAD
       "pro_image": "images/product/2.jpg"
+=======
+      "pro image": "images/product/2.png"
+>>>>>>> cdac72cfb3b9578e0da6d4d97d82a4944590de20
     },
     {
       "pro_id": "3",
       "pro_name": "product3",
       "pro_desc": "productproductproduct1",
+<<<<<<< HEAD
       "pro_image": "images/product/3.jpeg"
     },
     {
@@ -33,6 +43,21 @@ class _HomeState extends State<Home> {
       "pro_name": "product4",
       "pro_desc": "productproductproduct1",
       "pro_image": "images/product/4.jpg"
+=======
+      "pro image": "images/product/2.png"
+    },
+    {
+      "pro_id": "3",
+      "pro_name": "product3",
+      "pro_desc": "productproductproduct1",
+      "pro image": "images/product/2.png"
+    },
+    {
+      "pro_id": "3",
+      "pro_name": "product3",
+      "pro_desc": "productproductproduct1",
+      "pro image": "images/product/2.png"
+>>>>>>> cdac72cfb3b9578e0da6d4d97d82a4944590de20
     },
   ];
   var myarr_category = [
@@ -67,6 +92,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Container(
         child: Scaffold(
+<<<<<<< HEAD
       key: _KeyDrawer,
       endDrawer: MyDrawer(),
       body: Directionality(
@@ -158,6 +184,106 @@ class _HomeState extends State<Home> {
             ),
           ])),
     ));
+=======
+            key: _KeyDrawer,
+            endDrawer: MyDrawer(),
+            body: Directionality(
+                textDirection: TextDirection.ltr,
+                child: Column(children: [
+                  Container(
+                    alignment: Alignment.topLeft,
+                    margin: EdgeInsets.only(top: 30),
+                    padding: EdgeInsets.only(left: 15),
+                    child: Text(
+                      "konunuz",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.grey),
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.only(left: 15),
+                        child: Text(
+                          "Adreslerim",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      IconButton(
+                        icon: Icon(
+                          Icons.arrow_drop_down,
+                          color: Colors.red,
+                        ),
+                        onPressed: () {},
+                      )
+                    ],
+                  ),
+                  new Container(
+                    padding: EdgeInsets.all(15),
+                    child: Row(
+                      children: [
+                        GestureDetector(
+                            onTap: () {
+                              _KeyDrawer.currentState.openEndDrawer();
+                            },
+                            child: new Icon(Icons.menu,
+                            size: 42,)),
+                        Expanded(
+                            child: new Container(
+                          padding: EdgeInsets.only(left: 10, right: 10),
+                          decoration: BoxDecoration(
+                              color: Colors.grey[200],
+                              borderRadius: BorderRadius.circular(25.0)),
+                          child: new TextFormField(
+                            decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: " ",
+                                suffixIcon: Icon(Icons.search)),
+                          ),
+                        )),
+                      ],
+                    ),
+                  ),
+                  new Container(
+                    width: MediaQuery.of(context).size.width ,
+                    height: 110,
+                    child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: myarr_category.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return SingleCategory(
+                            cat_id: myarr_category[index]["cat_id"],
+                            cat_image: myarr_category[index]["cat_image"],
+                            cat_name: myarr_category[index]["cat_name"],
+                          );
+                        }),
+                  ),
+                  new Container(
+                    width: MediaQuery.of(context).size.width ,
+                    height: 200,
+                    child: ListView.builder(
+                        itemCount: myarr_product.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return SingleProduct(
+                            pro_id: myarr_product[index]["pro_id"],
+                            pro_image: myarr_product[index]["pro_image"],
+                            pro_name: myarr_product[index]["pro_name"],
+                            pro_desc: myarr_product[index]["pro_desc"],
+                          );
+                        }),
+                  ),
+
+                ]
+                )
+            ),
+
+              )
+
+
+          );
+
+
+>>>>>>> cdac72cfb3b9578e0da6d4d97d82a4944590de20
   }
 }
 
@@ -169,12 +295,29 @@ class SingleProduct extends StatelessWidget {
 
   SingleProduct({this.pro_id, this.pro_name, this.pro_desc, this.pro_image});
 
+<<<<<<< HEAD
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => ProductDetail()));
+=======
+class SingleProduct extends StatelessWidget {
+    final String pro_id;
+   final String pro_name;
+    final String pro_desc;
+    final String pro_image;
+
+
+    SingleProduct({ this.pro_id, this.pro_name, this.pro_desc, this.pro_image});
+
+  @override
+  Widget build(BuildContext context) {
+    return  GestureDetector(
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context)=> ProductDetail()));
+>>>>>>> cdac72cfb3b9578e0da6d4d97d82a4944590de20
       },
       child: new Container(
         padding: EdgeInsets.all(10.0),
@@ -184,22 +327,41 @@ class SingleProduct extends StatelessWidget {
           children: [
             new Container(
               width: MediaQuery.of(context).size.width,
+<<<<<<< HEAD
               height: MediaQuery.of(context).size.height / 4,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15.0),
                   image: DecorationImage(
                       fit: BoxFit.cover, image: AssetImage(pro_image))),
+=======
+              height: MediaQuery.of(context).size.height/4 ,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15.0),
+                  image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: AssetImage(pro_image))),
+>>>>>>> cdac72cfb3b9578e0da6d4d97d82a4944590de20
             ),
             SizedBox(
               height: 10,
             ),
             new Text(
               pro_name,
+<<<<<<< HEAD
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
             ),
             new Text(
               pro_desc,
               style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey),
+=======
+              style: TextStyle(
+                  fontWeight: FontWeight.bold, fontSize: 15),
+            ),
+            new Text(
+              pro_desc,
+              style: TextStyle(
+                  fontWeight: FontWeight.bold, color: Colors.grey),
+>>>>>>> cdac72cfb3b9578e0da6d4d97d82a4944590de20
             ),
           ],
         ),
