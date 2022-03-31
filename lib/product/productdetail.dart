@@ -76,7 +76,7 @@ class _ProductDetailState extends State<ProductDetail> {
               bottomRight: Radius.circular(50.0),
             )),
         child: Column(children: [
-          Image.asset("images/product/pro3.jpg"),
+          Image.asset("images/product/3.png"),
           Padding(padding: EdgeInsets.only(top: 30.0)),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

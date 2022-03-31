@@ -25,7 +25,7 @@ class _GetStartState extends State<GetStart> {
               ),
               new Container(
                 height: myheight,
-                padding: EdgeInsets.all(10.0),
+                padding: EdgeInsets.all(15.0),
                 decoration: BoxDecoration(
                     color: ToolsUtilites.PrimeryColor,
                     boxShadow: [
@@ -46,15 +46,24 @@ class _GetStartState extends State<GetStart> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          "اشهى المأكولات",
+                          "Teknoloji Dünyası",
                           textAlign: TextAlign.right,
                           style: TextStyle(
                               color: Colors.white,
-                              fontSize: 24.0,
+                              fontSize: 30.0,
                               fontWeight: FontWeight.bold),
                         ),
+                        SizedBox(height: 10,),
                         Text(
-                            "افضل المأكولات تجدونها في مطعمنا العدي من المأكولات لدينا",
+                            "En büyük indirimler ",
+                            textAlign: TextAlign.right,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20.0,
+                            )),
+                        SizedBox(height: 10,),
+                        Text(
+                            " aradığınyüz binlerce indirimli ürün en uygun fiyatlar" ,
                             textAlign: TextAlign.right,
                             style: TextStyle(
                               color: Colors.white,
@@ -76,8 +85,8 @@ class _GetStartState extends State<GetStart> {
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(20.0)),
                                 child: Text(
-                                  "ابدأ من هنا",
-                                  style: TextStyle(fontSize: 20.0),
+                                  "Başla",
+                                  style: TextStyle(fontSize: 25.0),
                                 )),
                           ),
                         )

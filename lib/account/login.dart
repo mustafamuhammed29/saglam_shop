@@ -24,6 +24,7 @@ class _LoginState extends State<Login> {
             ),
             onPressed: () => Navigator.of(context).pop()),
       ),
+
       body: Container(
         margin: EdgeInsets.all(25.0),
         child: Column(
@@ -32,7 +33,9 @@ class _LoginState extends State<Login> {
                 child: Form(
                   child: ListView(
                     children: <Widget>[
+
                       Container(
+
                         margin: EdgeInsets.only(bottom: 35.0),
                         child: Text(
                           " Burdan giriş yap ",
@@ -40,6 +43,7 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                       Container(
+
                         margin: EdgeInsets.only(bottom: 10.0),
                         padding: EdgeInsets.only(left: 20.0, right: 20.0),
                         decoration: BoxDecoration(
@@ -100,6 +104,8 @@ class _LoginState extends State<Login> {
                               builder: (context) => new Home()));
                         },
                         child: Container(
+                          padding: EdgeInsets.only(
+                              left: 30.0, right: 30.0, top: 5.0, bottom: 7.0),
                           alignment: Alignment.center,
                           width: MediaQuery
                               .of(context)
@@ -111,7 +117,6 @@ class _LoginState extends State<Login> {
                                 fontSize: 20.0),
                           ),
                           margin: EdgeInsets.only(bottom: 10.0, top: 30.0),
-                          padding: EdgeInsets.all(2.0),
                           decoration: BoxDecoration(
                               color: Colors.red,
                               borderRadius: BorderRadius.circular(25.0)),

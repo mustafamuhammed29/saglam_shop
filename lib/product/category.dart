@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:saglam_shop/product/subcategory.dart';
 
 class Category extends StatefulWidget {
   @override
@@ -10,27 +10,47 @@ class _CategoryState extends State<Category> {
   var myarr_category = [
     {
       "cat_id": "1",
-      "cat_name": "cat1",
+      "cat_name": "Asus",
       "cat_image": "images/category/cat1.png"
     },
     {
       "cat_id": "2",
-      "cat_name": "cat2",
+      "cat_name": "Samsung",
       "cat_image": "images/category/cat2.png"
     },
     {
       "cat_id": "3",
-      "cat_name": "cat3",
+      "cat_name": "Htc",
       "cat_image": "images/category/cat3.png"
     },
     {
-      "cat_id": "3",
-      "cat_name": "cat3",
+      "cat_id": "4",
+      "cat_name": "Kulaklık",
       "cat_image": "images/category/cat3.png"
     },
     {
       "cat_id": "5",
-      "cat_name": "cat5",
+      "cat_name": "Oyunculara Özel",
+      "cat_image": "images/category/cat5.png"
+    },
+    {
+      "cat_id": "4",
+      "cat_name": "Kulaklık",
+      "cat_image": "images/category/cat3.png"
+    },
+    {
+      "cat_id": "5",
+      "cat_name": "Oyunculara Özel",
+      "cat_image": "images/category/cat5.png"
+    },
+    {
+      "cat_id": "4",
+      "cat_name": "Kulaklık",
+      "cat_image": "images/category/cat3.png"
+    },
+    {
+      "cat_id": "5",
+      "cat_name": "Oyunculara Özel",
       "cat_image": "images/category/cat5.png"
     },
   ];
@@ -39,7 +59,7 @@ class _CategoryState extends State<Category> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Text("Gatekategory"),
+        title: Text("Gatekategory",style: TextStyle(color: Colors.black87),),
         leading: InkWell(
           onTap:(){Navigator.of(context).pop();
           } ,
@@ -72,12 +92,13 @@ class SingleCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(right: 10.0),
+      margin: EdgeInsets.only(top: 15),
+      padding: EdgeInsets.only(right: 15.0),
       child: Column(
         children: [
           InkWell(
             onTap: () {
-            /* Navigator.push(context, MaterialPageRoute(builder: (context)=>SubCategory()));*/
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>new SubCategory(cat_id: cat_id,cat_name: cat_name,)));
             },
             child: ListTile(
               leading: Container(
@@ -91,7 +112,7 @@ class SingleCategory extends StatelessWidget {
                 cat_name,
                 style: TextStyle(fontSize: 17),
               ),
-              trailing: Icon(Icons.arrow_back_ios),
+              trailing: Icon(Icons.arrow_forward_ios),
             ),
           ),
           Divider(),

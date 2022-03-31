@@ -59,11 +59,12 @@ flutter:
     - images/tip2.png
     - images/tip3.png
     #====================product
-    - images/product/1.jpg
-    - images/product/2.jpg
-    - images/product/3.jpeg
-    - images/product/4.jpg
-    - images/product/5.jpg
+    - images/product/1.png
+    - images/product/2.png
+    - images/product/3.png
+    - images/product/4.png
+    - images/product/5.png
+    - images/product/6.png
     #====================category
     - images/category/cat1.png
     - images/category/cat2.png

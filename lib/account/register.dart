@@ -34,7 +34,7 @@ class _RegisterState extends State<Register> {
                   Container(
                     margin: EdgeInsets.only(bottom: 30.0),
                     child: Text(
-                      " Kayıt ol  ",
+                      " Üye ol",
                       style: TextStyle(fontSize: 25.0, color: Colors.red),
                     ),
                   ),
@@ -48,7 +48,7 @@ class _RegisterState extends State<Register> {
                         borderRadius: BorderRadius.circular(25.0)),
                     child: TextFormField(
                       decoration: InputDecoration(
-                          hintText: "Adı Soyadı ", border: InputBorder.none),
+                          hintText: " adı soyadı ", border: InputBorder.none),
                       validator: (String value) {
                         if (value.isEmpty || value.length < 1) {
                           return " kulancı adı boş bırakma ";
@@ -64,7 +64,7 @@ class _RegisterState extends State<Register> {
                         borderRadius: BorderRadius.circular(25.0)),
                     child: TextFormField(
                       decoration: InputDecoration(
-                          hintText: "E posta", border: InputBorder.none),
+                          hintText: "E-posta adresi", border: InputBorder.none),
                       validator: (String value) {
                         if (value.isEmpty ||
                             value.indexOf(".") == -1 ||
@@ -100,7 +100,7 @@ class _RegisterState extends State<Register> {
                     child: TextFormField(
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
-                          hintText: "telefon numarsaı ",
+                          hintText: "telefon numarası",
                           border: InputBorder.none),
                       validator: (String value) {
                         if (value.isEmpty || value.length < 5) {
@@ -128,12 +128,13 @@ class _RegisterState extends State<Register> {
                   Container(
                     margin: EdgeInsets.only(top: 10),
                     alignment: Alignment.bottomCenter,
-                    child: Text("الشروط"),
+                    child: Text("aydınlatma metni"),
                   )
                 ],
               ),
             )),
             Container(
+
               alignment: Alignment.center,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -143,7 +144,7 @@ class _RegisterState extends State<Register> {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => Login()));
                     },
-                    child: Text("Giriş Yap ",style: TextStyle(color: Colors.red,fontSize: 15,fontWeight:FontWeight.bold))
+                    child: Text("Giriş Yap ",style: TextStyle(color: Colors.red,fontSize: 20,fontWeight:FontWeight.bold))
 
                      )
                 ],

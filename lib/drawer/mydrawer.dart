@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:saglam_shop/pages/tips/category.dart';
+import 'package:saglam_shop/product/category.dart';
 
 
 class MyDrawer extends StatefulWidget {
@@ -47,7 +47,7 @@ class _MyDrawerState extends State<MyDrawer> {
                       onTap: () {},
                       child: ListTile(
                         title: Text(
-                          "الصفحة الرئيسية",
+                          "Ana sayfa",
                           style: TextStyle(color: Colors.black, fontSize: 20.0),
                         ),
                         leading: Icon(
@@ -78,11 +78,11 @@ class _MyDrawerState extends State<MyDrawer> {
                       },
                       child: ListTile(
                         title: Text(
-                          "قائمة المأكولات",
+                          "Category",
                           style: TextStyle(color: Colors.black, fontSize: 20.0),
                         ),
                         leading: Icon(
-                          Icons.restaurant,
+                          Icons.category_outlined,
                           color: Colors.red,
                         ),
                         trailing: Icon(
@@ -102,7 +102,7 @@ class _MyDrawerState extends State<MyDrawer> {
                 data: theme,
                 child: ExpansionTile(
                   title: Text(
-                    "حسابي",
+                    "Hesabım",
                     style: TextStyle(color: Colors.black, fontSize: 16.0),
                   ),
                   children: <Widget>[
@@ -117,7 +117,7 @@ class _MyDrawerState extends State<MyDrawer> {
                             },
                             child: ListTile(
                               title: Text(
-                                "تغيير الاعدادات الشخصية",
+                                "Kullanıcı Bilgilerim",
                                 style: TextStyle(
                                     color: Colors.black, fontSize: 16.0),
                               ),
@@ -148,7 +148,7 @@ class _MyDrawerState extends State<MyDrawer> {
                             },
                             child: ListTile(
                               title: Text(
-                                "تغيير كلمة المرور",
+                                "Şifre Güncelleme",
                                 style: TextStyle(
                                     color: Colors.black, fontSize: 16.0),
                               ),
@@ -186,7 +186,7 @@ class _MyDrawerState extends State<MyDrawer> {
                       },
                       child: ListTile(
                         title: Text(
-                          "مفضلاتي",
+                          "Favorilerim",
                           style: TextStyle(color: Colors.black, fontSize: 20.0),
                         ),
                         leading: Icon(
@@ -216,7 +216,37 @@ class _MyDrawerState extends State<MyDrawer> {
                       },
                       child: ListTile(
                         title: Text(
-                          "سلة التسوق",
+                          "Sepetim",
+                          style: TextStyle(color: Colors.black, fontSize: 20.0),
+                        ),
+                        leading: Icon(
+                          Icons.shopping_bag_outlined,
+                          color: Colors.red,
+                        ),
+                        trailing: Icon(
+                          Icons.arrow_forward_ios,
+                          color: Colors.black,
+                          size: 18.0,
+                        ),
+                      ),
+                    ),
+                    Divider(
+                      color: Colors.grey[500],
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.only(right: 10.0, left: 10.0),
+                child: Column(
+                  children: <Widget>[
+                    InkWell(
+                      onTap: () {
+
+                      },
+                      child: ListTile(
+                        title: Text(
+                          "Siparişlerim",
                           style: TextStyle(color: Colors.black, fontSize: 20.0),
                         ),
                         leading: Icon(
@@ -246,37 +276,7 @@ class _MyDrawerState extends State<MyDrawer> {
                       },
                       child: ListTile(
                         title: Text(
-                          "طلباتي",
-                          style: TextStyle(color: Colors.black, fontSize: 20.0),
-                        ),
-                        leading: Icon(
-                          Icons.history,
-                          color: Colors.red,
-                        ),
-                        trailing: Icon(
-                          Icons.arrow_forward_ios,
-                          color: Colors.black,
-                          size: 18.0,
-                        ),
-                      ),
-                    ),
-                    Divider(
-                      color: Colors.grey[500],
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.only(right: 10.0, left: 10.0),
-                child: Column(
-                  children: <Widget>[
-                    InkWell(
-                      onTap: () {
-
-                      },
-                      child: ListTile(
-                        title: Text(
-                          "تتبع الطلبية",
+                          "Kargo takip",
                           style: TextStyle(color: Colors.black, fontSize: 20.0),
                         ),
                         leading: Icon(
@@ -304,7 +304,7 @@ class _MyDrawerState extends State<MyDrawer> {
                       onTap: () {},
                       child: ListTile(
                         title: Text(
-                          "من نحن",
+                          "Biz Kimiz",
                           style: TextStyle(color: Colors.black, fontSize: 20.0),
                         ),
                         leading: Icon(
@@ -332,7 +332,7 @@ class _MyDrawerState extends State<MyDrawer> {
                       onTap: () {},
                       child: ListTile(
                         title: Text(
-                          "مركز الدعم",
+                          "İletişim",
                           style: TextStyle(color: Colors.black, fontSize: 20.0),
                         ),
                         leading: Icon(
@@ -362,11 +362,11 @@ class _MyDrawerState extends State<MyDrawer> {
                       },
                       child: ListTile(
                         title: Text(
-                          "خروج",
+                          "Çıkış yap",
                           style: TextStyle(color: Colors.black, fontSize: 20.0),
                         ),
                         leading: Icon(
-                          Icons.phone,
+                          Icons.exit_to_app,
                           color: Colors.red,
                         ),
                         trailing: Icon(
