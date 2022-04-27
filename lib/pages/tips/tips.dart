@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:page_indicator/page_indicator.dart';
-import 'package:saglam_shop/account/login.dart';
-import 'package:saglam_shop/account/register.dart';
+import 'package:saglam_shop/pages/account/login.dart';
+import 'package:saglam_shop/pages/account/register.dart';
 
 
 class Tips extends StatefulWidget {

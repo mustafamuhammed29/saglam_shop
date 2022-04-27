@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:saglam_shop/shopping/shopping.dart';
+import 'package:saglam_shop/pages/shopping/shopping.dart';
 
 class ProductDetail extends StatefulWidget {
   @override
@@ -11,7 +9,7 @@ class ProductDetail extends StatefulWidget {
 class _ProductDetailState extends State<ProductDetail> {
   Widget HeaderBuild() {
     return Container(
-      padding: EdgeInsets.all(15.5),
+      padding: EdgeInsets.all(5),
       child: Row(
         children: [
           Container(
@@ -33,7 +31,7 @@ class _ProductDetailState extends State<ProductDetail> {
                     Icons.arrow_back_ios,
                     color: Colors.red,
                   ))),
-          Expanded(child: Text(" ")),
+                   Expanded(child: Text("")),
           Container(
               decoration: BoxDecoration(
                   color: Colors.white,
@@ -77,7 +75,7 @@ class _ProductDetailState extends State<ProductDetail> {
             )),
         child: Column(children: [
           Image.asset("images/product/3.png"),
-          Padding(padding: EdgeInsets.only(top: 30.0)),
+          Padding(padding: EdgeInsets.only(top: 0.0)),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -92,84 +90,60 @@ class _ProductDetailState extends State<ProductDetail> {
                             offset: Offset(0, 1))
                       ],
                       borderRadius: BorderRadius.circular(15)),
-                  child: IconButton(
-                      onPressed: () {},
-                      icon: FaIcon(
-                        FontAwesomeIcons.minus,
-                        color: Colors.white,
-                      ))),
-              Padding(
-                  padding: EdgeInsets.only(top: 10),
-                  child: Text(
-                    " 1 ",
-                    style: TextStyle(color: Colors.black87, fontSize: 25),
-                  )),
-              Container(
-                  decoration: BoxDecoration(
-                      color: Colors.red,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey[100],
-                            spreadRadius: 1,
-                            blurRadius: 1,
-                            offset: Offset(0, 1))
-                      ],
-                      borderRadius: BorderRadius.circular(15)),
-                  child: IconButton(
-                      onPressed: () {},
-                      icon: FaIcon(
-                        FontAwesomeIcons.plus,
-                        color: Colors.white,
-                      )))
-            ],
+
           )
-        ]));
+        ])]));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: <Widget>[
-          HeaderBuild(),
-          imageProduct(),
-          Container(
-            padding: EdgeInsets.all(35),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                new Text(
-                  "Marka",
-                  style: TextStyle(fontSize: 25),
-                ),
-                Padding(padding: EdgeInsets.only(bottom: 15.0)),
-                new Row(
-                  children: [
-                    new Icon(
-                      Icons.favorite,
-                      color: Colors.red,
-                    ),
-                    new Text("7"),
-                    Expanded(child: Text("")),
-                    new Icon(
-                      Icons.star,
-                      color: Colors.amberAccent,
-                    ),
-                    new Text("4.5"),
-                  ],
-                ),
-                new Text(
-                  " paragraphs consist of three parts: the topic sentence,paragraphs consist of three parts: the topic sentence body sentences, and the concluding o",
-                  style: TextStyle(fontSize: 16, color: Colors.grey),
-                )
-              ],
-            ),
-          )
-        ],
+      body: Directionality(
+        textDirection: TextDirection.ltr,
+        child: ListView(
+          children: <Widget>[
+            HeaderBuild(),
+            imageProduct(),
+            Container(
+              padding: EdgeInsets.all(35),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  new Text(
+                    "Asus n550jk",
+                    style: TextStyle(fontSize: 25),
+                  ),
+                  Padding(padding: EdgeInsets.only(bottom: 15.0)),
+                  new Row(
+                    children: [
+                      new Icon(
+                        Icons.favorite,
+                        color: Colors.red,
+                      ),
+                      new Text("7"),
+                      Expanded(child: Text("")),
+                      new Icon(
+                        Icons.star,
+                        color: Colors.amberAccent,
+                      ),
+                      new Text("4.5"),
+                    ],
+                  ),
+                  new Text(
+                    " paragraphs consist of three parts: the topic sentence,paragraphs consist of three parts: the topic sentence body sentences, and the concluding o",
+                    style: TextStyle(fontSize: 16, color: Colors.grey),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
       ),
-      bottomNavigationBar: Container(
+
+      bottomNavigationBar:
+      Container(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(17.0),
           child: Row(
             children: <Widget>[
               new Text(
@@ -179,6 +153,7 @@ class _ProductDetailState extends State<ProductDetail> {
                     color: Colors.white,
                     fontWeight: FontWeight.bold),
               ),
+
               Expanded(child: Text("")),
               Container(
                 decoration: BoxDecoration(
@@ -191,13 +166,13 @@ class _ProductDetailState extends State<ProductDetail> {
                           offset: Offset(0, 1))
                     ],
                     borderRadius: BorderRadius.circular(40)),
-                margin: EdgeInsets.all(5),
-                padding: EdgeInsets.all(10),
+                margin: EdgeInsets.all(1),
+                padding: EdgeInsets.all(5),
                 child: Text(
                   "Sepata Ekle ",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 15,
+                      fontSize:15,
                       color: Colors.white),
                 ),
               ),
@@ -206,14 +181,14 @@ class _ProductDetailState extends State<ProductDetail> {
                   icon: Icon(
                     Icons.shopping_cart,
                     color: Colors.red,
-                  ),
+                  ), onPressed: () {  },
                 ),
               ),
             ],
           ),
         ),
         padding: EdgeInsets.only(left: 50, right: 30),
-        height: 65.0,
+        height: 60.0,
         decoration: BoxDecoration(
             color: Colors.red[300],
             boxShadow: [
@@ -224,7 +199,10 @@ class _ProductDetailState extends State<ProductDetail> {
                   offset: Offset(0, 3))
             ],
             borderRadius: BorderRadius.circular(50)),
+
       ),
+
     );
+
   }
 }

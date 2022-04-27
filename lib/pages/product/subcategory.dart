@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:saglam_shop/product/product.dart';
+import 'package:saglam_shop/pages/product/product.dart';
 
 class SubCategory extends StatefulWidget {
   final String cat_id;

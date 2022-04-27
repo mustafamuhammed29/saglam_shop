@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:saglam_shop/drawer/mydrawer.dart';
-import 'package:saglam_shop/product/productdetail.dart';
+import 'package:saglam_shop/pages/drawer/mydrawer.dart';
+import 'package:saglam_shop/pages/product/productdetail.dart';
 
 class Home extends StatefulWidget {
   @override

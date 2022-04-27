@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:saglam_shop/Utilites/toolsutilites.dart';
-import 'package:saglam_shop/account/login.dart';
+import 'package:saglam_shop/pages/Utilites/toolsutilites.dart';
+import 'package:saglam_shop/pages/account/login.dart';
+
 
 class Register extends StatefulWidget {
   @override

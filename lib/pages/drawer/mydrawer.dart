@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:saglam_shop/product/category.dart';
+import 'package:saglam_shop/pages/account/changepassword.dart';
+import 'package:saglam_shop/pages/account/myprofile.dart';
+import 'package:saglam_shop/pages/favorite/favorite.dart';
+import 'package:saglam_shop/pages/product/category.dart';
+
 
 
 class MyDrawer extends StatefulWidget {
@@ -113,7 +117,7 @@ class _MyDrawerState extends State<MyDrawer> {
                         children: <Widget>[
                           InkWell(
                             onTap: () {
-
+                            Navigator.push(context, MaterialPageRoute(builder:(context)=>new MyProfile() ));
                             },
                             child: ListTile(
                               title: Text(
@@ -144,6 +148,7 @@ class _MyDrawerState extends State<MyDrawer> {
                         children: <Widget>[
                           InkWell(
                             onTap: () {
+                              Navigator.push(context, MaterialPageRoute(builder:(context)=>new ChangePassword() ));
 
                             },
                             child: ListTile(
@@ -182,6 +187,7 @@ class _MyDrawerState extends State<MyDrawer> {
                   children: <Widget>[
                     InkWell(
                       onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder:(context)=>new Favorite() ));
 
                       },
                       child: ListTile(

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:saglam_shop/account/forgetPassword.dart';
-import 'package:saglam_shop/account/register.dart';
-import 'package:saglam_shop/home/home.dart';
-
+import 'package:saglam_shop/pages/account/forgetPassword.dart';
+import 'package:saglam_shop/pages/account/register.dart';
+import 'package:saglam_shop/pages/home/home.dart';
 
 class Login extends StatefulWidget {
   @override

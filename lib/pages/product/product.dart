@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:saglam_shop/product/productdetail.dart';
+import 'package:saglam_shop/pages/product/productdetail.dart';
 
 class product extends StatefulWidget {
 
@@ -15,7 +15,7 @@ class _productState extends State<product> {
       "pro_name": "product1",
       "pro_desc": "productproductproduct1",
       "pro_image": "images/product/1.png",
-       "pro_offer":"1"
+      "pro_offer":"1"
     },
     {
       "pro_id": "2",
@@ -43,23 +43,23 @@ class _productState extends State<product> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child:Scaffold(
-        body: Container(
-          child: ListView.builder(
-            itemCount: myarr_product.length,
-            itemBuilder: (BuildContext context,int index){
-              return SingleProduct(
+        child:Scaffold(
+          body: Container(
+            child: ListView.builder(
+              itemCount: myarr_product.length,
+              itemBuilder: (BuildContext context,int index){
+                return SingleProduct(
                   pro_desc:myarr_product[index]["pro_desc"],
                   pro_name:myarr_product[index]["pro_name"],
                   pro_image:myarr_product[index]["pro_image"],
                   pro_id:myarr_product[index]["pro_id"],
                   pro_offer:myarr_product[index]["pro_offer"],
 
-              );
-            },
+                );
+              },
+            ),
           ),
-        ),
-      )
+        )
     );
   }
 }

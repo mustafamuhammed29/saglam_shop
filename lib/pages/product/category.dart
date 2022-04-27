@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:saglam_shop/product/subcategory.dart';
+import 'package:saglam_shop/pages/product/subcategory.dart';
 
 class Category extends StatefulWidget {
   @override

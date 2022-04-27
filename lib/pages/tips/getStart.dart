@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:saglam_shop/Utilites/toolsutilites.dart';
+import 'package:saglam_shop/pages/Utilites/toolsutilites.dart';
 import 'package:saglam_shop/pages/tips/tips.dart';
-
 
 class GetStart extends StatefulWidget {
   @override
@@ -11,21 +10,39 @@ class GetStart extends StatefulWidget {
 class _GetStartState extends State<GetStart> {
   @override
   Widget build(BuildContext context) {
-    double myheight = MediaQuery.of(context).size.height / 3;
+    double myheight = MediaQuery.of(context).size.height / 3.4;
     return Scaffold(
-      body: new Container(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+
+        leading:IconButton(
+          icon: Icon(
+            Icons.language,
+            color: Colors.red,
+          ),
+
+          onPressed: () {
+
+          },
+        )
+      ),
+      body:
+      new Container(
+
           child: Column(
             children: <Widget>[
               new Container(
+
                 height: myheight * 2,
                 decoration: BoxDecoration(
                     color: Colors.white,
                     image: DecorationImage(
                         image: AssetImage("images/tip0.png"), fit: BoxFit.contain)),
               ),
+
               new Container(
                 height: myheight,
-                padding: EdgeInsets.all(15.0),
+                padding: EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
                     color: ToolsUtilites.PrimeryColor,
                     boxShadow: [
@@ -45,25 +62,20 @@ class _GetStartState extends State<GetStart> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text(
-                          "Teknoloji Dünyası",
-                          textAlign: TextAlign.right,
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 30.0,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(height: 10,),
-                        Text(
-                            "En büyük indirimler ",
-                            textAlign: TextAlign.right,
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            "aradığın yüz binlerce indirimli ürün en uygun fiyatlar",
+                            textAlign: TextAlign.left,
                             style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20.0,
-                            )),
-                        SizedBox(height: 10,),
+                                color: Colors.white,
+                                fontSize: 24.0,
+                                fontWeight: FontWeight.bold),
+
+                          ),
+                        ),
                         Text(
-                            " aradığınyüz binlerce indirimli ürün en uygun fiyatlar" ,
+                            "bilgisayar, cep telefonu ",
                             textAlign: TextAlign.right,
                             style: TextStyle(
                               color: Colors.white,
@@ -80,13 +92,13 @@ class _GetStartState extends State<GetStart> {
                             },
                             child: Container(
                                 padding: EdgeInsets.only(
-                                    left: 30.0, right: 30.0, top: 5.0, bottom: 5.0),
+                                    left: 30.0, right: 30.0, top: 7.0, bottom: 7.0),
                                 decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(20.0)),
                                 child: Text(
                                   "Başla",
-                                  style: TextStyle(fontSize: 25.0),
+                                  style: TextStyle(fontSize: 20.0),
                                 )),
                           ),
                         )
