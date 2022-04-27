@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:saglam_shop/pages/account/register.dart';
 
 class ForgetPassword extends StatefulWidget {
   @override
@@ -22,67 +23,67 @@ class _ForgetPasswordState extends State<ForgetPassword> {
               onPressed: () => Navigator.of(context).pop()),
         ),
         body: Directionality(
-          textDirection: TextDirection.ltr,
+          textDirection: TextDirection.rtl,
           child: Container(
             margin: EdgeInsets.all(10.0),
             child: Column(
               children: <Widget>[
                 Expanded(
                     child: Form(
-                  child: ListView(
-                    children: <Widget>[
-                      Container(
-                        margin: EdgeInsets.only(bottom: 35.0),
-                        child: Text(
-                          " şifreyi yenele",
-                          style: TextStyle(fontSize: 25.0, color: Colors.red),
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(bottom: 35.0),
-                        child: Text(
-                          " lütfen e posta doğru girinız ",
-                          style: TextStyle(fontSize: 16.0, color: Colors.grey),
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(bottom: 10.0),
-                        padding: EdgeInsets.only(left: 20.0, right: 20.0),
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(25.0)),
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                              hintText: " eposta edresı",
-                              border: InputBorder.none),
-                          validator: (String value) {
-                            if (value.isEmpty ||
-                                value.indexOf(".") == -1 ||
-                                value.indexOf("@") == -1) {
-                              return "lütfe eposta yaz ";
-                            }
-                          },
-                        ),
-                      ),
-                      MaterialButton(
-                          onPressed: () {},
-                          child: Container(
-                            alignment: Alignment.center,
-                            width: MediaQuery.of(context).size.width,
+                      child: ListView(
+                        children: <Widget>[
+                          Container(
+                            margin: EdgeInsets.only(bottom: 35.0),
                             child: Text(
-                              "gönder ",
-                              style: TextStyle(
-                                  color: Colors.white, fontSize: 20.0),
+                              "نسيت كلمة المرور ",
+                              style: TextStyle(fontSize: 25.0, color: Colors.red),
                             ),
-                            margin: EdgeInsets.only(bottom: 10.0, top: 30.0),
-                            padding: EdgeInsets.all(2.0),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(bottom: 35.0),
+                            child: Text(
+                              "قم بادخال الايميل الصحيح ليتم ارسال كلمة المرور اليك ",
+                              style: TextStyle(fontSize: 16.0, color: Colors.grey),
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(bottom: 10.0),
+                            padding: EdgeInsets.only(left: 20.0, right: 20.0),
                             decoration: BoxDecoration(
-                                color: Colors.red,
+                                color: Colors.white,
                                 borderRadius: BorderRadius.circular(25.0)),
-                          )),
-                    ],
-                  ),
-                )),
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                  hintText: "البريد الالكتروني",
+                                  border: InputBorder.none),
+                              validator: (String value) {
+                                if (value.isEmpty ||
+                                    value.indexOf(".") == -1 ||
+                                    value.indexOf("@") == -1) {
+                                  return "الرجاء ادخال البريد الالكتروني";
+                                }
+                              },
+                            ),
+                          ),
+                          MaterialButton(
+                              onPressed: () {},
+                              child: Container(
+                                alignment: Alignment.center,
+                                width: MediaQuery.of(context).size.width,
+                                child: Text(
+                                  "ارسال",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20.0),
+                                ),
+                                margin: EdgeInsets.only(bottom: 10.0, top: 30.0),
+                                padding: EdgeInsets.all(2.0),
+                                decoration: BoxDecoration(
+                                    color: Colors.red,
+                                    borderRadius: BorderRadius.circular(25.0)),
+                              )),
+                        ],
+                      ),
+                    )),
               ],
             ),
           ),

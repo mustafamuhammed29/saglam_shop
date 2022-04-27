@@ -59,12 +59,9 @@ flutter:
     - images/tip2.png
     - images/tip3.png
     #====================product
-    - images/product/1.png
-    - images/product/2.png
-    - images/product/3.png
-    - images/product/4.png
-    - images/product/5.png
-    - images/product/6.png
+    - images/product/pro1.jpg
+    - images/product/pro2.jpg
+    - images/product/pro3.jpg
     #====================category
     - images/category/cat1.png
     - images/category/cat2.png

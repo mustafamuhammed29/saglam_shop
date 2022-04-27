@@ -1,74 +1,64 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:saglam_shop/pages/product/subcategory.dart';
+import 'package:saglam_shop/pages/product/product.dart';
+
+
+import '../config.dart';
+import '../function.dart';
 
 class Category extends StatefulWidget {
   @override
-  State<Category> createState() => _CategoryState();
+  _CategoryState createState() => _CategoryState();
 }
 
 class _CategoryState extends State<Category> {
-  var myarr_category = [
-    {
-      "cat_id": "1",
-      "cat_name": "Asus",
-      "cat_image": "images/category/cat1.png"
-    },
-    {
-      "cat_id": "2",
-      "cat_name": "Samsung",
-      "cat_image": "images/category/cat2.png"
-    },
-    {
-      "cat_id": "3",
-      "cat_name": "Htc",
-      "cat_image": "images/category/cat3.png"
-    },
-    {
-      "cat_id": "4",
-      "cat_name": "Kulaklık",
-      "cat_image": "images/category/cat3.png"
-    },
-    {
-      "cat_id": "5",
-      "cat_name": "Oyunculara Özel",
-      "cat_image": "images/category/cat5.png"
-    },
-    {
-      "cat_id": "4",
-      "cat_name": "Kulaklık",
-      "cat_image": "images/category/cat3.png"
-    },
-    {
-      "cat_id": "5",
-      "cat_name": "Oyunculara Özel",
-      "cat_image": "images/category/cat5.png"
-    },
-    {
-      "cat_id": "4",
-      "cat_name": "Kulaklık",
-      "cat_image": "images/category/cat3.png"
-    },
-    {
-      "cat_id": "5",
-      "cat_name": "Oyunculara Özel",
-      "cat_image": "images/category/cat5.png"
-    },
-  ];
+  var myarr_category = [];
+  bool loadingCategory = false;
+  getCategoryData() async {
+    loadingCategory = true;
+    setState(() {});
+    List arr = await getData(0, 100, "category/readcategory.php", "", "");
+    for (int i = 0; i < arr.length; i++) {
+      myarr_category.add({
+        "cat_id": arr[i]["cat_id"],
+        "cat_name": arr[i]["cat_name"],
+        "cat_image": arr[i]["cat_thumbnail"] == null
+            ? "def.png"
+            : arr[i]["cat_thumbnail"]
+      });
+    }
+    loadingCategory = false;
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getCategoryData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Text("Gatekategory",style: TextStyle(color: Colors.black87),),
+        title: Text(
+          "قائمة المأكولات",
+          style: TextStyle(color: Colors.black),
+        ),
         leading: InkWell(
-          onTap:(){Navigator.of(context).pop();
-          } ,
-
-          child: Icon(Icons.arrow_back_ios,color: Colors.black87,),
-
+          onTap: () {
+            Navigator.of(context).pop();
+          },
+          child: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
         ),
       ),
       body: Container(
+        margin: EdgeInsets.only(top: 10.0),
         child: ListView.builder(
             itemCount: myarr_category.length,
             itemBuilder: (BuildContext context, int index) {
@@ -88,29 +78,51 @@ class SingleCategory extends StatelessWidget {
   final String cat_image;
 
   SingleCategory({this.cat_id, this.cat_name, this.cat_image});
-
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 15),
-      padding: EdgeInsets.only(right: 15.0),
+      padding: EdgeInsets.only(right: 10.0),
       child: Column(
-        children: [
+        children: <Widget>[
           InkWell(
             onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>new SubCategory(cat_id: cat_id,cat_name: cat_name,)));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => new Product(
+                        cat_id: cat_id,
+                        cat_name: cat_name,
+                      )));
             },
             child: ListTile(
               leading: Container(
-                padding: EdgeInsets.all(5.0),
+                padding: EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50.5),
-                    color: Colors.white70),
-                child: Image.asset(cat_image),
+                    borderRadius: BorderRadius.circular(50.0),
+                    color: Colors.red[100]),
+                child: cat_image == null || cat_image == ""
+                    ? CachedNetworkImage(
+                  height: 64.0,
+                  width: 64.0,
+                  fit: BoxFit.cover,
+                  imageUrl: images_Category + "def.png",
+                  placeholder: (context, url) =>
+                      CircularProgressIndicator(),
+                  errorWidget: (context, url, error) => Icon(Icons.error),
+                )
+                    : CachedNetworkImage(
+                  height: 64.0,
+                  width: 64.0,
+                  fit: BoxFit.cover,
+                  imageUrl: images_Category + cat_image,
+                  placeholder: (context, url) =>
+                      CircularProgressIndicator(),
+                  errorWidget: (context, url, error) => Icon(Icons.error),
+                ),
               ),
               title: Text(
                 cat_name,
-                style: TextStyle(fontSize: 17),
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
               trailing: Icon(Icons.arrow_forward_ios),
             ),

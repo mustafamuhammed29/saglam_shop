@@ -1,18 +1,27 @@
-import 'package:flutter/cupertino.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:saglam_shop/pages/account/myprofile.dart';
+import 'package:saglam_shop/pages/function.dart';
+import 'package:saglam_shop/pages/home/home.dart';
+import 'package:saglam_shop/pages/provider/cart.dart';
+import 'package:saglam_shop/pages/provider/item.dart';
+
+import '../config.dart';
 
 class Shopping extends StatefulWidget {
   @override
-  State<Shopping> createState() => _ShoppingState();
+  _ShoppingState createState() => _ShoppingState();
 }
 
 class _ShoppingState extends State<Shopping> {
-  Widget HeaderBuild() {
+  Widget headerBuild() {
     return Container(
-      padding: EdgeInsets.all(5),
+      padding: EdgeInsets.all(15.0),
       child: Row(
-        children: [
+        children: <Widget>[
+          //==========================back
           Container(
               decoration: BoxDecoration(
                   color: Colors.white,
@@ -25,162 +34,310 @@ class _ShoppingState extends State<Shopping> {
                   ],
                   borderRadius: BorderRadius.circular(15)),
               child: IconButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
                   icon: Icon(
                     Icons.arrow_back_ios,
                     color: Colors.red,
-                  ))),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  })),
           Expanded(child: Text("")),
-   ],
+//=======================shopping cart
+        ],
       ),
     );
   }
-  var  mypro=[
-    {
-    "pro_id": "1",
-    "pro_name": "laptop",
-    "pro_price": "100",
-    "pro_image": "images/product/1.png",
-    "pro_qty": "3",
-  },
 
+  saveCart(context, Cart myPro) async {
+    Map arr = {
+      "data": myPro.getStringCart(),
+      "cus_id": G_cus_id_val,
+      "bil_address": "",
+      "bil_before_note": ""
+    };
 
-  {
-  "pro_id": "1",
-  "pro_name": "laptop",
-  "pro_price": "100",
-  "pro_image": "images/product/1.png",
-  "pro_qty": "3",
-},
-  {
-    "pro_id": "1",
-    "pro_name": "laptop",
-    "pro_price": "100",
-    "pro_image": "images/category/cat1.png",
-    "pro_qty": "3",
-  },
-  {
-    "pro_id": "1",
-    "pro_name": "laptop",
-    "pro_price": "100",
-    "pro_image": "images/category/cat1.png",
-    "pro_qty": "3",
-  },
-  {
-    "pro_id": "1",
-    "pro_name": "laptop",
-    "pro_price": "100",
-    "pro_image": "images/category/cat1.png",
-    "pro_qty": "3",
-  },
+    var res = await SaveData(
+        arr, "bill/insert_bill.php", context, () => Home(), "insert");
+    myPro.clearCart();
+  }
 
-  ];
-
-
+  void _showSheetMessage(context, Cart myPro) {
+    showModalBottomSheet(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(15.0),
+                topRight: Radius.circular(15.0))),
+        context: context,
+        builder: (BuildContext bc) {
+          return Container(
+              child: ListView(
+                children: <Widget>[
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                          margin: EdgeInsets.only(top: 30.0, bottom: 30.0),
+                          child:
+                          new Icon(Icons.done, size: 55.0, color: Colors.red)),
+                      new Text(
+                        "شكرا لطلبك",
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25.0),
+                      ),
+                      new Text(
+                        "يمكنك تتبع الطلبية من خلال الضغط على الزر في الاسفل",
+                        style: TextStyle(color: Colors.grey, fontSize: 16.0),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 50.0),
+                        child: MaterialButton(
+                            child: Container(
+                              margin: EdgeInsets.all(15.0),
+                              width: MediaQuery.of(context).size.width,
+                              child: Text("تابع الطلبية",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    color: Colors.white,
+                                  )),
+                              decoration: BoxDecoration(
+                                color: Colors.red,
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                            ),
+                            onPressed: () {
+                              saveCart(context, myPro);
+                            }),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 5.0),
+                        child: MaterialButton(
+                            child: Container(
+                              margin: EdgeInsets.all(15.0),
+                              width: MediaQuery.of(context).size.width,
+                              child: Text("الانتقال الى المأكولات",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                  )),
+                              decoration: BoxDecoration(
+                                color: Colors.grey[100],
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                            ),
+                            onPressed: () {}),
+                      )
+                    ],
+                  )
+                ],
+              ));
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
+    var myProvider = Provider.of<Cart>(context);
+
     return Scaffold(
+      backgroundColor: Colors.grey[50],
       body: Directionality(
-        textDirection: TextDirection.ltr,
-
-        child:
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ListView.builder(
-             itemCount: mypro.length,
-            itemBuilder: (context,index){
-              return SingleProduct(
-                pro_id: mypro[index]["pro_id"],
-                pro_name: mypro[index]["pro_name"],
-                pro_image: mypro[index]["pro_image"],
-                pro_gty: mypro[index]["pro_gty"],
-                pro_price: mypro[index]["pro_price"],
-              );
-            },
-          ),
-        )
-      ),
-
-      bottomNavigationBar:
-      Container(
-        child: Padding(
-          padding: const EdgeInsets.all(17.0),
-        ),
-        padding: EdgeInsets.only(left: 50, right: 30),
-        height: 60.0,
-        decoration: BoxDecoration(
-            color: Colors.red[300],
-            boxShadow: [
-              BoxShadow(
-                  color: Colors.red,
-                  spreadRadius: 0,
-                  blurRadius: 0,
-                  offset: Offset(0, 3))
-            ],
-            borderRadius: BorderRadius.circular(50)),
-
-      ),
-
-    );
-
-  }
-}
-class SingleProduct extends StatelessWidget {
- final String pro_id;
- final String pro_name;
- final String pro_price;
- final String pro_gty;
- final String pro_image;
-
-   SingleProduct({Key key, this.pro_id, this.pro_name, this.pro_price, this.pro_gty, this.pro_image}) : super(key: key);
-
-
- @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: ListTile(
-        title: Text(pro_name,style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        subtitle: Text(pro_price),
-        leading: Container(
-          width: 50.0,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(pro_image),
-              fit:BoxFit.cover,
+        textDirection: TextDirection.rtl,
+        child: Stack(
+          children: [
+            Container(
+              margin: EdgeInsets.only(top: 60),
+              child: ListView.builder(
+                itemCount: myProvider.listItems().length,
+                itemBuilder: (context, index) {
+                  return SingleProduct(
+                    index: index,
+                    item: myProvider.listItems()[index],
+                  );
+                },
+              ),
             ),
-            shape: BoxShape.circle,
-          ),
+            Positioned(
+              top: 0.0,
+              left: 0.0,
+              right: 0.0,
+              height: 120.0,
+              child: headerBuild(),
+            )
+          ],
         ),
-        trailing: Container(
-          width: 50.0,
-          child: Row(
-            children: [
-              GestureDetector(
+      ),
+      bottomNavigationBar: Container(
+        height: 210.0,
+        child: Column(
+          children: <Widget>[
+            Card(
               child: Container(
-                child: FaIcon(FontAwesomeIcons.plus,color: Colors.white,),
-                decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.circular(5)
+                padding: EdgeInsets.all(5.0),
+                child: Column(
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        new Text("اجمالي المبلغ"),
+                        new Expanded(child: Text("")),
+                        new Text(myProvider.totalItems().toString())
+                      ],
+                    ),
+                    Divider(
+                      color: Colors.black,
+                    ),
+                    Row(
+                      children: <Widget>[
+                        new Text("دلفري"),
+                        new Expanded(child: Text("")),
+                        new Text("0")
+                      ],
+                    ),
+                    Divider(
+                      color: Colors.black,
+                    ),
+                    Row(
+                      children: <Widget>[
+                        new Text("الاجمالي الكلي"),
+                        new Expanded(child: Text("")),
+                        new Text(myProvider.totalItems().toString())
+                      ],
+                    )
+                  ],
                 ),
               ),
             ),
-              new Text(pro_gty),
-              GestureDetector(
-                child: Container(
-                  child: FaIcon(FontAwesomeIcons.minus,color: Colors.white,),
-                  decoration: BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.circular(5)
+            Container(
+              margin: EdgeInsets.only(bottom: 5.0),
+              alignment: Alignment.center,
+              child: GestureDetector(
+                onTap: () {},
+                child: Text(
+                  "اضافة الى السلة",
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+              ),
+              height: 40.0,
+              decoration: BoxDecoration(
+                  color: Colors.red, borderRadius: BorderRadius.circular(40)),
+            ),
+            Container(
+              alignment: Alignment.center,
+              child: GestureDetector(
+                onTap: () {
+                  _showSheetMessage(context, myProvider);
+                },
+                child: Text(
+                  "تأكيد الطلبية",
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+              ),
+              height: 40.0,
+              decoration: BoxDecoration(
+                  color: Colors.red, borderRadius: BorderRadius.circular(40)),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class SingleProduct extends StatelessWidget {
+  final int index;
+  final Item item;
+
+  SingleProduct({this.item, this.index});
+  @override
+  Widget build(BuildContext context) {
+    var mypro = Provider.of<Cart>(context);
+    return Card(
+      child: Column(
+        children: <Widget>[
+          Container(
+            alignment: Alignment.topRight,
+            child: Icon(
+              Icons.cancel,
+              color: Colors.red,
+            ),
+          ),
+          Container(
+            child: ListTile(
+              title: Text(
+                item.ite_name,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              ),
+              subtitle: Text(item.ite_price.toString()),
+              leading: Container(
+                margin: EdgeInsets.only(right: 5.0),
+                height: 100.0,
+                width: 100.0,
+                child: CachedNetworkImage(
+                  imageUrl: imagesFood +
+                      (item.ite_image == null || item.ite_image == ""
+                          ? "def.png"
+                          : item.ite_image),
+                  imageBuilder: (context, imageProvider) => Container(
+                    width: 80.0,
+                    height: 80.0,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                          image: imageProvider, fit: BoxFit.cover),
+                    ),
                   ),
                 ),
               ),
-            ],
+              trailing: Container(
+                width: 70.0,
+                child: Row(
+                  children: <Widget>[
+                    GestureDetector(
+                      onTap: () {
+                        mypro.add_cart(item);
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(5),
+                        child: FaIcon(
+                          FontAwesomeIcons.plus,
+                          color: Colors.white,
+                          size: 16,
+                        ),
+                        decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(5.0)),
+                      ),
+                    ),
+                    Expanded(
+                      child: new Text(
+                        mypro.getCountByItem(item).toString(),
+                        style: TextStyle(fontSize: 19),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        mypro.remove_cart(item);
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(5),
+                        child: FaIcon(
+                          FontAwesomeIcons.minus,
+                          color: Colors.white,
+                          size: 16,
+                        ),
+                        decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(5.0)),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

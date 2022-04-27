@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:saglam_shop/pages/account/changepassword.dart';
+import 'package:saglam_shop/pages/account/login.dart';
 import 'package:saglam_shop/pages/account/myprofile.dart';
+import 'package:saglam_shop/pages/bill/bill.dart';
 import 'package:saglam_shop/pages/favorite/favorite.dart';
+import 'package:saglam_shop/pages/order/tracking.dart';
 import 'package:saglam_shop/pages/product/category.dart';
+import 'package:saglam_shop/pages/shopping/shopping.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-
+import '../config.dart';
 
 class MyDrawer extends StatefulWidget {
   @override
@@ -12,7 +17,17 @@ class MyDrawer extends StatefulWidget {
 }
 
 class _MyDrawerState extends State<MyDrawer> {
-
+  logout(context) async {
+    SharedPreferences sh = await SharedPreferences.getInstance();
+    sh.remove(G_cus_id);
+    sh.remove(G_cus_name);
+    sh.remove(G_cus_image);
+    sh.remove(G_cus_mobile);
+    sh.remove(G_cus_email);
+    sh.clear();
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => Login()));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,16 +35,16 @@ class _MyDrawerState extends State<MyDrawer> {
     return Container(
       child: Drawer(
         child: Directionality(
-          textDirection: TextDirection.ltr,
+          textDirection: TextDirection.rtl,
           child: ListView(
             children: <Widget>[
               UserAccountsDrawerHeader(
                 accountName: Text(
-                  "Mustafa",
+                  "Thaer",
                   style: TextStyle(fontSize: 20.0, color: Colors.black),
                 ),
                 accountEmail: Text(
-                  "Mustafa665@gmail.com",
+                  "thaer@gmail.com",
                   style: TextStyle(color: Colors.grey),
                 ),
                 currentAccountPicture: GestureDetector(
@@ -51,7 +66,7 @@ class _MyDrawerState extends State<MyDrawer> {
                       onTap: () {},
                       child: ListTile(
                         title: Text(
-                          "Ana sayfa",
+                          "الصفحة الرئيسية",
                           style: TextStyle(color: Colors.black, fontSize: 20.0),
                         ),
                         leading: Icon(
@@ -71,22 +86,24 @@ class _MyDrawerState extends State<MyDrawer> {
                   ],
                 ),
               ),
-
               Container(
                 padding: EdgeInsets.only(right: 10.0, left: 10.0),
                 child: Column(
                   children: <Widget>[
                     InkWell(
                       onTap: () {
-                         Navigator.push(context, MaterialPageRoute(builder: (context)=>Category()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => new Category()));
                       },
                       child: ListTile(
                         title: Text(
-                          "Category",
+                          "قائمة المأكولات",
                           style: TextStyle(color: Colors.black, fontSize: 20.0),
                         ),
                         leading: Icon(
-                          Icons.category_outlined,
+                          Icons.restaurant,
                           color: Colors.red,
                         ),
                         trailing: Icon(
@@ -106,7 +123,7 @@ class _MyDrawerState extends State<MyDrawer> {
                 data: theme,
                 child: ExpansionTile(
                   title: Text(
-                    "Hesabım",
+                    "حسابي",
                     style: TextStyle(color: Colors.black, fontSize: 16.0),
                   ),
                   children: <Widget>[
@@ -117,11 +134,14 @@ class _MyDrawerState extends State<MyDrawer> {
                         children: <Widget>[
                           InkWell(
                             onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder:(context)=>new MyProfile() ));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => new MyProfile()));
                             },
                             child: ListTile(
                               title: Text(
-                                "Kullanıcı Bilgilerim",
+                                "تغيير الاعدادات الشخصية",
                                 style: TextStyle(
                                     color: Colors.black, fontSize: 16.0),
                               ),
@@ -148,12 +168,15 @@ class _MyDrawerState extends State<MyDrawer> {
                         children: <Widget>[
                           InkWell(
                             onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder:(context)=>new ChangePassword() ));
-
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                      new ChangePassword()));
                             },
                             child: ListTile(
                               title: Text(
-                                "Şifre Güncelleme",
+                                "تغيير كلمة المرور",
                                 style: TextStyle(
                                     color: Colors.black, fontSize: 16.0),
                               ),
@@ -187,12 +210,14 @@ class _MyDrawerState extends State<MyDrawer> {
                   children: <Widget>[
                     InkWell(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder:(context)=>new Favorite() ));
-
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => new Favorite()));
                       },
                       child: ListTile(
                         title: Text(
-                          "Favorilerim",
+                          "مفضلاتي",
                           style: TextStyle(color: Colors.black, fontSize: 20.0),
                         ),
                         leading: Icon(
@@ -218,41 +243,14 @@ class _MyDrawerState extends State<MyDrawer> {
                   children: <Widget>[
                     InkWell(
                       onTap: () {
-
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => new Shopping()));
                       },
                       child: ListTile(
                         title: Text(
-                          "Sepetim",
-                          style: TextStyle(color: Colors.black, fontSize: 20.0),
-                        ),
-                        leading: Icon(
-                          Icons.shopping_bag_outlined,
-                          color: Colors.red,
-                        ),
-                        trailing: Icon(
-                          Icons.arrow_forward_ios,
-                          color: Colors.black,
-                          size: 18.0,
-                        ),
-                      ),
-                    ),
-                    Divider(
-                      color: Colors.grey[500],
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.only(right: 10.0, left: 10.0),
-                child: Column(
-                  children: <Widget>[
-                    InkWell(
-                      onTap: () {
-
-                      },
-                      child: ListTile(
-                        title: Text(
-                          "Siparişlerim",
+                          "سلة التسوق",
                           style: TextStyle(color: Colors.black, fontSize: 20.0),
                         ),
                         leading: Icon(
@@ -278,11 +276,47 @@ class _MyDrawerState extends State<MyDrawer> {
                   children: <Widget>[
                     InkWell(
                       onTap: () {
-
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => new Bill()));
                       },
                       child: ListTile(
                         title: Text(
-                          "Kargo takip",
+                          "طلباتي",
+                          style: TextStyle(color: Colors.black, fontSize: 20.0),
+                        ),
+                        leading: Icon(
+                          Icons.history,
+                          color: Colors.red,
+                        ),
+                        trailing: Icon(
+                          Icons.arrow_forward_ios,
+                          color: Colors.black,
+                          size: 18.0,
+                        ),
+                      ),
+                    ),
+                    Divider(
+                      color: Colors.grey[500],
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.only(right: 10.0, left: 10.0),
+                child: Column(
+                  children: <Widget>[
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => new Tracking()));
+                      },
+                      child: ListTile(
+                        title: Text(
+                          "تتبع الطلبية",
                           style: TextStyle(color: Colors.black, fontSize: 20.0),
                         ),
                         leading: Icon(
@@ -310,7 +344,7 @@ class _MyDrawerState extends State<MyDrawer> {
                       onTap: () {},
                       child: ListTile(
                         title: Text(
-                          "Biz Kimiz",
+                          "من نحن",
                           style: TextStyle(color: Colors.black, fontSize: 20.0),
                         ),
                         leading: Icon(
@@ -338,7 +372,7 @@ class _MyDrawerState extends State<MyDrawer> {
                       onTap: () {},
                       child: ListTile(
                         title: Text(
-                          "İletişim",
+                          "مركز الدعم",
                           style: TextStyle(color: Colors.black, fontSize: 20.0),
                         ),
                         leading: Icon(
@@ -364,11 +398,11 @@ class _MyDrawerState extends State<MyDrawer> {
                   children: <Widget>[
                     InkWell(
                       onTap: () {
-
+                        logout(context);
                       },
                       child: ListTile(
                         title: Text(
-                          "Çıkış yap",
+                          "خروج",
                           style: TextStyle(color: Colors.black, fontSize: 20.0),
                         ),
                         leading: Icon(

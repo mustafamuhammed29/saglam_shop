@@ -1,42 +1,60 @@
-// ignore_for_file: use_key_in_widget_constructors, import_of_legacy_library_into_null_safe, prefer_const_constructors
-
 import 'package:flutter/material.dart';
-import 'package:saglam_shop/pages/Utilites/toolsutilites.dart';
+import 'package:provider/provider.dart';
+import 'package:saglam_shop/pages/home/home.dart';
+import 'package:saglam_shop/pages/provider/cart.dart';
+import 'package:saglam_shop/pages/provider/loading.dart';
 import 'package:saglam_shop/pages/tips/getStart.dart';
-import 'package:saglam_shop/pages/tips/tips.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'package:saglam_shop/pages/config.dart';
 
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: Splash(),
-  ));
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  prefs = await SharedPreferences.getInstance();
+  G_cus_id_val = prefs.getString(G_cus_id);
+  runApp(Splash());
 }
 
+//343434
 class Splash extends StatefulWidget {
   @override
-  State<Splash> createState() => _SplashState();
+  _SplashState createState() => _SplashState();
 }
 
 class _SplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
-    return SplashScreen(
-      seconds: 5,
-      navigateAfterSeconds: new GetStart(),
-      // ignore: unnecessary_new
-      title: new Text(
-        'Hoş geldiniz',
-        style: new TextStyle(
-            fontWeight: FontWeight.bold, fontSize: 20.0, color: Colors.white),
-      ),
-
-      backgroundColor: ToolsUtilites.PrimeryColor,
-      styleTextUnderTheLoader: new TextStyle(),
-      photoSize: 100.0,
-      onClick: () => print("Sagalam online"),
-      loaderColor: Colors.red,
-    );
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider<LoadingControl>(
+            create: (context) => LoadingControl(),
+          ),
+          ChangeNotifierProvider<Cart>(
+            create: (context) => Cart(),
+          )
+        ],
+        child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            home: new SplashScreen(
+              seconds: 3,
+              routeName: "/",
+              navigateAfterSeconds:
+              G_cus_id_val == null ? new GetStart() : new Home(),
+              title: new Text(
+                'مرحبا بكم في تطبيق المطعم',
+                style: new TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20.0,
+                    color: Colors.white),
+              ),
+              /*image: new Image.network(
+          'https://flutter.io/images/catalog-widget-placeholder.png'),*/
+              backgroundColor: primaryColor,
+              styleTextUnderTheLoader: new TextStyle(),
+              photoSize: 100.0,
+              onClick: () => print("restaurant"),
+              loaderColor: Colors.white,
+            )));
   }
 }
